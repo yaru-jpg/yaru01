@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计师作品集</title>
+    <style>
+        /* Token variables */
+        :root {
+            /* Colors */
+            --color-primary: #7C4DFF;
+            --color-text-primary: #1F2937;
+            --color-text-secondary: #4B5563;
+            --color-text-placeholder: #9CA3AF;
+            --color-border: #E5E7EB;
+            --color-white: #FFFFFF;
+            --color-background: #F9FAFB;
+            
+            /* Fonts */
+            --font-family-roboto: 'Roboto', sans-serif;
+            --font-family-pacifico: 'Pacifico', cursive;
+            
+            /* Shadows */
+            --shadow-card: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --blur-backdrop: blur(16px);
+        }
+
+        html {
+            scroll-behavior: smooth; /* 添加平滑滚动 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-roboto);
+            background-color: var(--color-background);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            height: 63px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-family-pacifico);
+            font-size: 24px;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .nav-link {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 600px;
+            background-image: url('https://image-resource.mastergo.com/161402837852565/161402837852567/157472f0626eb36fd28516ee7654bdb5.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        /* Works Section */
+        .works {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 96px 32px;
+            position: relative;
+        }
+
+        .works-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 932px;
+            background: linear-gradient(90deg, rgba(252, 231, 243, 0.3) 0%, rgba(243, 232, 255, 0.3) 100%);
+            border-radius: 24px;
+            filter: blur(64px);
+            z-index: -1;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            color: var(--color-text-primary);
+            margin-bottom: 64px;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1216px;
+            margin: 0 auto;
+        }
+
+        .work-card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #E9CAFE 0%, #7C4DFF 100%);
+            padding: 96px 0;
+        }
+
+        .contact-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .contact-form {
+            max-width: 672px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: var(--blur-backdrop);
+            box-shadow: var(--shadow-card);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px dashed var(--color-border);
+            border-radius: 12px;
+            font-family: var(--font-family-roboto);
+            font-size: 16px;
+        }
+
+        .form-textarea {
+            height: 128px;
+            resize: none;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--color-text-placeholder);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 12px 0;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(90deg, #FDF2F8 0%, #FAF5FF 100%);
+            padding: 32px 0;
+            backdrop-filter: blur(4px);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .social-link {
+            color: var(--color-text-secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--color-text-secondary);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">logo</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#works" class="nav-link">作品</a>
+                <a href="#contact" class="nav-link">联系</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <canvas id="trailCanvas"></canvas>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="works">
+        <div class="works-bg"></div>
+        <h2 class="section-title">精选作品</h2>
+        <div class="works-grid">
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/b4f16b1fff679402dc70ca112e379249.png" alt="作品1">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/0eca0d714cc2e54fdc415d6686decffc.png" alt="作品2">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/f8b3754d4c794b46a98c6086f99e6da0.png" alt="作品3">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/b592af758c4eca9ac73eb86e45764a16.png" alt="作品4">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/7b8bb11274700fd788dd74ff6bce8fbf.png" alt="作品5">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/c8c60b68d7da6dcc58d112ae9b452ee2.png" alt="作品6">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title" style="color: var(--color-white)">联系我们</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label class="form-label">邮箱地址</label>
+                    <input type="email" class="form-input" placeholder="请输入您的邮箱">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">留言内容</label>
+                    <textarea class="form-textarea" placeholder="请输入您的留言"></textarea>
+                </div>
+                <button type="submit" class="submit-button">发送消息</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.7846 12.6094Q19.0154 13.5 18.4615 14.1094Q17.9077 14.7188 17.0769 14.5781Q16.2923 14.5312 16.1538 15.1875Q16.0154 15.8438 16.7538 16.125Q18.5538 16.4062 19.6154 15.1406Q20.7231 13.9219 20.2615 12.1406Q19.9385 11.4375 19.2923 11.625Q18.6462 11.8594 18.7846 12.6094ZM9.92308 0Q7.43077 0 5.16923 0.796875Q2.90769 1.54688 1.47692 3Q0.0461538 4.40625 0 6.42188Q0.0923077 9.60938 3.50769 13.125Q5.86154 15.4688 7.93846 16.2656Q10.0154 17.0625 11.0769 16.3594Q12.1385 15.6563 11.5385 13.4062Q11.4462 13.0312 11.6769 13.0312Q11.9077 13.0312 12.0462 13.125Q12.0923 13.125 12.0923 13.125Q14.9538 14.2969 16.5692 13.6875Q18.1846 13.125 17.3538 10.7344Q17.1692 10.1719 17.7231 10.0781Q20.8154 9 20.5846 6.60938Q20.3538 4.21875 17.5385 2.20312Q14.6769 0.140625 9.92308 0ZM16.5692 6.89062Q16.2923 8.85938 14.1692 9.98438Q12.0462 11.1562 9 10.875Q6 10.5469 4.15385 9Q2.26154 7.45313 2.4 5.4375Q2.63077 3.46875 4.8 2.29688Q6.92308 1.17188 9.92308 1.45312Q12.9231 1.78125 14.8154 3.32812Q16.6615 4.875 16.5692 6.89062ZM16.0615 19.3125Q15.1846 18.9844 15.3692 18.2344Q15.5538 17.4375 16.4308 17.5313Q18.1385 17.8125 19.4769 17.0625Q20.8615 16.3125 21.4615 14.8594Q22.1077 13.4062 21.6 11.7188Q21.4615 10.8281 22.2 10.5469Q22.9385 10.3125 23.3077 11.1562Q24 13.5469 23.1231 15.5625Q22.2923 17.5781 20.3538 18.6562Q18.4615 19.7812 16.0615 19.3125ZM12.4154 4.73438Q11.7692 3.32812 10.3385 2.71875Q8.90769 2.10938 7.38462 2.57813Q5.95385 3.04688 5.44615 4.26563Q4.93846 5.4375 5.53846 6.75Q6.18462 8.01562 7.52308 8.625Q8.86154 9.23438 10.2923 8.85938Q11.7692 8.4375 12.4154 7.26562Q13.0154 6.14062 12.4154 4.73438ZM8.44615 6.14062Q7.98462 6.32812 7.47692 6.14062Q7.01538 6 6.69231 5.53125Q6.13846 4.5 7.10769 3.9375Q7.56923 3.75 8.07692 3.89062Q8.58462 4.07812 8.90769 4.54688Q9.41539 5.57812 8.44615 6.14062ZM9.96923 6.75Q9.55385 6.84375 9.27692 6.51562Q9.09231 6.09375 9.46154 5.90625Q9.87692 5.76562 10.1538 6.14062Q10.3385 6.5625 9.96923 6.75Z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22.8327 16.875Q24 15.6094 23.9066 13.7812L23.9066 4.3125Q23.8599 2.4375 22.6459 1.26562Q21.4786 0.046875 19.6109 0L4.29572 0Q2.42802 0.046875 1.2607 1.26562Q0.0466926 2.48438 0 4.5L0 13.7812Q0.0466926 15.6094 1.2607 16.875Q2.42802 18.0469 4.29572 18.0938L5.64981 18.0938L4.48249 19.3125Q4.06226 19.6875 4.06226 20.3438Q4.06226 20.9531 4.48249 21.3281Q4.90272 21.75 5.50973 21.75Q6.11673 21.75 6.53696 21.3281L9.94553 18.0938L14.0545 18.0938L17.5564 21.3281Q17.9767 21.75 18.5837 21.75Q19.1907 21.75 19.6109 21.3281Q19.9844 20.9531 20.0311 20.3438Q19.9844 19.6875 19.6109 19.3125L18.4436 18.0938L19.7977 18.0938Q21.6654 18.0469 22.8327 16.875ZM21.0117 13.5937Q20.965 14.2969 20.4981 14.7187Q20.0778 15.1406 19.4241 15.1406L4.48249 15.1406Q3.82879 15.1406 3.36187 14.7187Q2.94163 14.2969 2.94163 13.5937L2.94163 4.5Q2.94163 3.84375 3.36187 3.375Q3.82879 2.95312 4.48249 2.90625L19.4241 2.90625Q20.0778 2.95312 20.5447 3.375Q20.965 3.84375 21.0117 4.5L21.0117 13.5937ZM8.68482 11.5781Q9.10506 11.1562 9.15175 10.5L9.15175 8.95312Q9.10506 8.29688 8.68482 7.875Q8.26459 7.40625 7.5642 7.40625Q6.91051 7.40625 6.49027 7.875Q6.02335 8.29688 6.02335 8.95312L6.02335 10.5Q6.02335 11.1562 6.49027 11.5781Q6.91051 12.0469 7.5642 12.0469Q8.2179 12.0469 8.68482 11.5781ZM17.6031 11.5781Q18.0233 11.1562 18.07 10.5L18.07 8.95312Q18.0233 8.29688 17.6031 7.875Q17.1829 7.40625 16.5292 7.40625Q15.8288 7.40625 15.4086 7.875Q14.9416 8.29688 14.9416 8.95312L14.9416 10.5Q14.9883 11.1562 15.4086 11.5781Q15.8755 12.0469 16.5292 12.0469Q17.1829 12.0469 17.6031 11.5781Z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="copyright">© 2024 设计师作品集. 保留所有权利</p>
+        </div>
+    </footer>
+
+    <script>
+        // 为所有导航链接添加平滑滚动效果
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // 如果链接href不是#（首页），则添加平滑滚动
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    const navHeight = document.querySelector('.nav').offsetHeight;
+                    
+                    // 计算目标位置，考虑导航栏高度
+                    const targetPosition = targetElement.offsetTop - navHeight;
+                    
+                    // 平滑滚动到目标位置
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 鼠标拖尾效果
+        const canvas = document.getElementById('trailCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // 设置 Canvas 尺寸
+        function resizeCanvas() {
+            const hero = document.querySelector('.hero');
+            canvas.width = hero.offsetWidth;
+            canvas.height = hero.offsetHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // 粒子类
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.life = 1;
+                this.color = `hsla(${Math.random() * 60 + 250}, 100%, 70%, ${this.life})`;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life -= 0.01;
+                this.color = `hsla(${Math.random() * 60 + 250}, 100%, 70%, ${this.life})`;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        // 存储粒子的数组
+        let particles = [];
+        let mouseX = 0;
+        let mouseY = 0;
+        let isMouseInHero = false;
+
+        // 监听鼠标移动
+        const hero = document.querySelector('.hero');
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+            
+            // 添加新粒子
+            for (let i = 0; i < 3; i++) {
+                particles.push(new Particle(mouseX, mouseY));
+            }
+        });
+
+        hero.addEventListener('mouseenter', () => {
+            isMouseInHero = true;
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            isMouseInHero = false;
+        });
+
+        // 动画循环
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 更新和绘制粒子
+            for (let i = particles.length - 1; i >= 0; i--) {
+                particles[i].update();
+                particles[i].draw();
+
+                // 移除生命值耗尽的粒子
+                if (particles[i].life <= 0) {
+                    particles.splice(i, 1);
+                }
+            }
+
+            // 限制粒子数量
+            if (particles.length > 300) {
+                particles = particles.slice(particles.length - 300);
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

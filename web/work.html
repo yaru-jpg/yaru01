@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计师作品集</title>
+    <style>
+        /* Token variables */
+        :root {
+            /* Colors */
+            --color-primary: #7C4DFF;
+            --color-text-primary: #1F2937;
+            --color-text-secondary: #4B5563;
+            --color-white: #FFFFFF;
+            --color-background: #F9FAFB;
+            
+            /* Fonts */
+            --font-family-roboto: 'Roboto', sans-serif;
+            --font-family-pacifico: 'Pacifico', cursive;
+
+            /* Shadows */
+            --shadow-card: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-roboto);
+            background-color: var(--color-background);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            height: 63px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-family-pacifico);
+            font-size: 24px;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .nav-link {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Full Screen Image Section */
+        .full-screen-image {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+
+        .full-screen-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Description Section */
+        .description {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .description h2 {
+            font-size: 32px;
+            color: var(--color-text-primary);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .description p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            text-align: justify;
+        }
+
+        /* Works Section */
+        .works {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 96px 32px;
+            position: relative;
+        }
+
+        .works-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 932px;
+            background: linear-gradient(90deg, rgba(252, 231, 243, 0.3) 0%, rgba(243, 232, 255, 0.3) 100%);
+            border-radius: 24px;
+            filter: blur(64px);
+            z-index: -1;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            color: var(--color-text-primary);
+            margin-bottom: 64px;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1216px;
+            margin: 0 auto;
+        }
+
+        .work-card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .work-card:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">logo</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#works" class="nav-link">作品</a>
+                <a href="#contact" class="nav-link">联系</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Full Screen Image -->
+    <section class="full-screen-image">
+        <img src="chahua.jpg" alt="插画作品">
+    </section>
+
+    <!-- Description -->
+    <section class="description">
+        <h2>作品介绍</h2>
+        <p>这是一幅充满创意和想象力的插画作品。作品运用了独特的视角和丰富的色彩，展现了艺术家对生活的独特理解和艺术表达。通过精心的构图和细节处理，作品成功地传达了深层的艺术理念，让观者能够感受到作品所要表达的情感和故事。</p>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="works">
+        <div class="works-bg"></div>
+        <h2 class="section-title">精选作品</h2>
+        <div class="works-grid">
+            <div class="work-card">
+                <img src="chahua.jpg" alt="作品1">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/0eca0d714cc2e54fdc415d6686decffc.png" alt="作品2">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/f8b3754d4c794b46a98c6086f99e6da0.png" alt="作品3">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/b592af758c4eca9ac73eb86e45764a16.png" alt="作品4">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/7b8bb11274700fd788dd74ff6bce8fbf.png" alt="作品5">
+            </div>
+            <div class="work-card">
+                <img src="https://image-resource.mastergo.com/161402837852565/161402837852567/c8c60b68d7da6dcc58d112ae9b452ee2.png" alt="作品6">
+            </div>
+        </div>
+    </section>
+</body>
+</html>
